@@ -2,7 +2,7 @@ prime_sieve
 ==========
 [![Gem Version](https://badge.fury.io/rb/prime_sieve.svg)](http://badge.fury.io/rb/prime_sieve)
 
-prime_sieve is a gem wrapper for the primesieve prime number generator
+prime_sieve is a gem wrapper for the [primesieve](http://primesieve.org/) prime number generator
 
 Installing
 ==========
