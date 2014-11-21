@@ -26,3 +26,12 @@ Then you have access to the `PrimeSieve` module which has all the functions of p
   * for example, to call `primesieve_generate_primes`, use `PrimeSieve.generate_primes(start, stop)`
 * the functions `callback_primes` and `parallel_callback_primes` take a block rather than a callback function
 * `primesieve_free` is not implemented
+
+But how fast is it?
+===================
+Ruby 2.1.3 [Prime](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/prime/rdoc/Prime.html) module vs. prime_sieve to generate 50,000,000 primes
+```
+           user     system      total        real
+Ruby 352.360000  95.060000 447.420000 (447.955983)
+gem    0.070000   0.020000   0.090000 (  0.083343)
+```
