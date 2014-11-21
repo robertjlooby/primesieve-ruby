@@ -7,7 +7,10 @@ prime_sieve is a gem wrapper for the primesieve prime number generator
 Installing
 ==========
 * Get primesieve
-** On OSX: `brew install primesieve`
+  * On OSX: `brew install primesieve`
+  * [download here](http://primesieve.org/downloads/)
+  * [follow instructions to build from source](http://primesieve.org/build.html)
+
 * Get the prime_sieve gem
   * `gem install prime_sieve`
 -or-
