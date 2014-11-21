@@ -29,9 +29,9 @@ Then you have access to the `PrimeSieve` module which has all the functions of p
 
 But how fast is it?
 ===================
-Ruby 2.1.3 [Prime](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/prime/rdoc/Prime.html) module vs. prime_sieve to generate 50,000,000 primes
+Ruby 2.1.3 [Prime](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/prime/rdoc/Prime.html) module vs. prime_sieve to generate the first 10,000,000 primes
 ```
            user     system      total        real
-Ruby 352.360000  95.060000 447.420000 (447.955983)
-gem    0.070000   0.020000   0.090000 (  0.083343)
+Ruby  26.680000   3.930000  30.610000 ( 30.621654)
+gem    0.290000   0.070000   0.360000 (  0.361699)
 ```
