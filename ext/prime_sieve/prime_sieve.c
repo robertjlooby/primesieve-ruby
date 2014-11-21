@@ -3,10 +3,10 @@
 VALUE mPrimeSieve;
 
 static VALUE generate_primes(VALUE self, VALUE start, VALUE stop) {
-  size_t size;
+  size_t size, i;
   uint64_t* primes = (uint64_t *) primesieve_generate_primes(NUM2ULL(start), NUM2ULL(stop), &size, UINT64_PRIMES);
   VALUE ruby_primes = rb_ary_new2(size);
-  for(size_t i = 0; i < size; i++) {
+  for(i = 0; i < size; i++) {
     rb_ary_store(ruby_primes, i, ULL2NUM(primes[i]));
   }
   primesieve_free(primes);
@@ -14,9 +14,10 @@ static VALUE generate_primes(VALUE self, VALUE start, VALUE stop) {
 }
 
 static VALUE generate_n_primes(VALUE self, VALUE n, VALUE start) {
+  long i;
   uint64_t* primes = (uint64_t *) primesieve_generate_n_primes(NUM2ULL(n), NUM2ULL(start), UINT64_PRIMES);
   VALUE ruby_primes = rb_ary_new2(NUM2LONG(n));
-  for(long i = 0; i < NUM2LONG(n); i++) {
+  for(i = 0; i < NUM2LONG(n); i++) {
     rb_ary_store(ruby_primes, i, ULL2NUM(primes[i]));
   }
   primesieve_free(primes);
