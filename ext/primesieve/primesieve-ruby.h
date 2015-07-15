@@ -1,5 +1,5 @@
-#ifndef RUBY_PRIMESIEVE
-#define RUBY_PRIMESIEVE
+#ifndef PRIMESIEVE_RUBY
+#define PRIMESIEVE_RUBY
 
 #include <ruby.h>
 #include <primesieve.h>

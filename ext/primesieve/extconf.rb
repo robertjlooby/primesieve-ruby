@@ -60,4 +60,4 @@ fns.each do |fn|
   end
 end
 
-create_makefile("prime_sieve/prime_sieve")
+create_makefile("primesieve/primesieve")
