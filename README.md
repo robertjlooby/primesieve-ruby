@@ -2,7 +2,7 @@ primesieve-ruby
 ===============
 [![Gem Version](https://badge.fury.io/rb/primesieve.svg)](http://badge.fury.io/rb/primesieve)
 
-Ruby bindings for the primesieve C/C++ library. Generates primes orders of magnitude faster than any pure Ruby code.  Features:
+Ruby bindings (gem wrapper) for the primesieve C/C++ library. Generates primes orders of magnitude faster than any pure Ruby code.  Features:
 
 * Generate a list of primes
 * Count primes and [prime k-tuplets](https://en.wikipedia.org/wiki/Prime_k-tuple)
