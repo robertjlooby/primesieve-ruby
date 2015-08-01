@@ -28,7 +28,7 @@ require 'primesieve'
 # Generate an array with the primes inside [0, 20]
 primes = Primesieve.generate_primes(0, 20)
 
-# Generate an array of the first 10 primes starting at 0
+# Generate an array with the first 10 primes starting at 0
 primes = Primesieve.generate_n_primes(10, 0)
 
 # Get the 10th prime
