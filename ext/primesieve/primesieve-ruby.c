@@ -127,13 +127,6 @@ static void parallel_callback_fn(uint64_t prime, int thread_id) {
   return;
 }
 
-static VALUE parallel_callback_primes(VALUE self, VALUE start, VALUE stop) {
-  if (!rb_block_given_p())
-    rb_raise(rb_eArgError, "Expected block");
-  primesieve_parallel_callback_primes(NUM2ULL(start), NUM2ULL(stop), parallel_callback_fn);
-  return Qnil;
-}
-
 static VALUE get_sieve_size(VALUE self) {
   return INT2NUM(primesieve_get_sieve_size());
 }
@@ -186,7 +179,6 @@ void Init_primesieve() {
   rb_define_module_function(mPrimesieve, "print_quintuplets", print_quintuplets, 2);
   rb_define_module_function(mPrimesieve, "print_sextuplets", print_sextuplets, 2);
   rb_define_module_function(mPrimesieve, "callback_primes", callback_primes, 2);
-  rb_define_module_function(mPrimesieve, "parallel_callback_primes", parallel_callback_primes, 2);
   rb_define_module_function(mPrimesieve, "get_sieve_size", get_sieve_size, 0);
   rb_define_module_function(mPrimesieve, "get_num_threads", get_num_threads, 0);
   rb_define_module_function(mPrimesieve, "get_max_stop", get_max_stop, 0);
