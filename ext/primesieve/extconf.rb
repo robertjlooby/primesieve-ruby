@@ -41,7 +41,6 @@ fns = [
  'primesieve_print_quintuplets',
  'primesieve_print_sextuplets',
  'primesieve_callback_primes',
- 'primesieve_parallel_callback_primes',
  'primesieve_get_sieve_size',
  'primesieve_get_num_threads',
  'primesieve_get_max_stop',
