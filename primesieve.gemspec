@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'primesieve'
-  s.version     = '1.1.0'
-  s.date        = '2015-12-10'
+  s.version     = '2.0.0'
+  s.date        = '2020-10-18'
   s.description = 'A wrapper for the primesieve C prime number generator'
   s.summary     = 'A wrapper for the primesieve lib'
   s.authors     = ['Robert Looby']
