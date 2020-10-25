@@ -28,10 +28,6 @@ static VALUE nth_prime(VALUE self, VALUE n, VALUE start) {
   return ULL2NUM(primesieve_nth_prime(NUM2LL(n), NUM2ULL(start)));
 }
 
-static VALUE parallel_nth_prime(VALUE self, VALUE n, VALUE start) {
-  return ULL2NUM(primesieve_parallel_nth_prime(NUM2LL(n), NUM2ULL(start)));
-}
-
 static VALUE count_primes(VALUE self, VALUE start, VALUE stop) {
   return ULL2NUM(primesieve_count_primes(NUM2ULL(start), NUM2ULL(stop)));
 }
@@ -54,30 +50,6 @@ static VALUE count_quintuplets(VALUE self, VALUE start, VALUE stop) {
 
 static VALUE count_sextuplets(VALUE self, VALUE start, VALUE stop) {
   return ULL2NUM(primesieve_count_sextuplets(NUM2ULL(start), NUM2ULL(stop)));
-}
-
-static VALUE parallel_count_primes(VALUE self, VALUE start, VALUE stop) {
-  return ULL2NUM(primesieve_parallel_count_primes(NUM2ULL(start), NUM2ULL(stop)));
-}
-
-static VALUE parallel_count_twins(VALUE self, VALUE start, VALUE stop) {
-  return ULL2NUM(primesieve_parallel_count_twins(NUM2ULL(start), NUM2ULL(stop)));
-}
-
-static VALUE parallel_count_triplets(VALUE self, VALUE start, VALUE stop) {
-  return ULL2NUM(primesieve_parallel_count_triplets(NUM2ULL(start), NUM2ULL(stop)));
-}
-
-static VALUE parallel_count_quadruplets(VALUE self, VALUE start, VALUE stop) {
-  return ULL2NUM(primesieve_parallel_count_quadruplets(NUM2ULL(start), NUM2ULL(stop)));
-}
-
-static VALUE parallel_count_quintuplets(VALUE self, VALUE start, VALUE stop) {
-  return ULL2NUM(primesieve_parallel_count_quintuplets(NUM2ULL(start), NUM2ULL(stop)));
-}
-
-static VALUE parallel_count_sextuplets(VALUE self, VALUE start, VALUE stop) {
-  return ULL2NUM(primesieve_parallel_count_sextuplets(NUM2ULL(start), NUM2ULL(stop)));
 }
 
 static VALUE print_primes(VALUE self, VALUE start, VALUE stop) {
@@ -110,23 +82,6 @@ static VALUE print_sextuplets(VALUE self, VALUE start, VALUE stop) {
   return Qnil;
 }
 
-static void callback_fn(uint64_t prime) {
-  rb_yield(ULL2NUM(prime));
-  return;
-}
-
-static VALUE callback_primes(VALUE self, VALUE start, VALUE stop) {
-  if (!rb_block_given_p())
-    rb_raise(rb_eArgError, "Expected block");
-  primesieve_callback_primes(NUM2ULL(start), NUM2ULL(stop), callback_fn);
-  return Qnil;
-}
-
-static void parallel_callback_fn(uint64_t prime, int thread_id) {
-  rb_yield_values(2, ULL2NUM(prime), INT2NUM(thread_id));
-  return;
-}
-
 static VALUE get_sieve_size(VALUE self) {
   return INT2NUM(primesieve_get_sieve_size());
 }
@@ -149,40 +104,27 @@ static VALUE set_num_threads(VALUE self, VALUE num_threads) {
   return Qnil;
 }
 
-static VALUE test(VALUE self) {
-  return INT2NUM(primesieve_test());
-}
-
 void Init_primesieve() {
   mPrimesieve = rb_define_module("Primesieve");
 
   rb_define_module_function(mPrimesieve, "generate_primes", generate_primes, 2);
   rb_define_module_function(mPrimesieve, "generate_n_primes", generate_n_primes, 2);
   rb_define_module_function(mPrimesieve, "nth_prime", nth_prime, 2);
-  rb_define_module_function(mPrimesieve, "parallel_nth_prime", parallel_nth_prime, 2);
   rb_define_module_function(mPrimesieve, "count_primes", count_primes, 2);
   rb_define_module_function(mPrimesieve, "count_twins", count_twins, 2);
   rb_define_module_function(mPrimesieve, "count_triplets", count_triplets, 2);
   rb_define_module_function(mPrimesieve, "count_quadruplets", count_quadruplets, 2);
   rb_define_module_function(mPrimesieve, "count_quintuplets", count_quintuplets, 2);
   rb_define_module_function(mPrimesieve, "count_sextuplets", count_sextuplets, 2);
-  rb_define_module_function(mPrimesieve, "parallel_count_primes", parallel_count_primes, 2);
-  rb_define_module_function(mPrimesieve, "parallel_count_twins", parallel_count_twins, 2);
-  rb_define_module_function(mPrimesieve, "parallel_count_triplets", parallel_count_triplets, 2);
-  rb_define_module_function(mPrimesieve, "parallel_count_quadruplets", parallel_count_quadruplets, 2);
-  rb_define_module_function(mPrimesieve, "parallel_count_quintuplets", parallel_count_quintuplets, 2);
-  rb_define_module_function(mPrimesieve, "parallel_count_sextuplets", parallel_count_sextuplets, 2);
   rb_define_module_function(mPrimesieve, "print_primes", print_primes, 2);
   rb_define_module_function(mPrimesieve, "print_twins", print_twins, 2);
   rb_define_module_function(mPrimesieve, "print_triplets", print_triplets, 2);
   rb_define_module_function(mPrimesieve, "print_quadruplets", print_quadruplets, 2);
   rb_define_module_function(mPrimesieve, "print_quintuplets", print_quintuplets, 2);
   rb_define_module_function(mPrimesieve, "print_sextuplets", print_sextuplets, 2);
-  rb_define_module_function(mPrimesieve, "callback_primes", callback_primes, 2);
   rb_define_module_function(mPrimesieve, "get_sieve_size", get_sieve_size, 0);
   rb_define_module_function(mPrimesieve, "get_num_threads", get_num_threads, 0);
   rb_define_module_function(mPrimesieve, "get_max_stop", get_max_stop, 0);
   rb_define_module_function(mPrimesieve, "set_sieve_size", set_sieve_size, 1);
   rb_define_module_function(mPrimesieve, "set_num_threads", set_num_threads, 1);
-  rb_define_module_function(mPrimesieve, "test", test, 0);
 }
